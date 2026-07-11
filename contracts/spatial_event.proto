@@ -1,0 +1,34 @@
+// contracts/spatial_event.proto
+// Wire contract: Engineer 2 (Spatial Engine) → Engineer 3 (Event Broker)
+// Transport: in-process channel (same binary) or local IPC socket (separate processes).
+
+syntax = "proto3";
+package aisentry;
+
+option go_package = "github.com/aisentry/simulator/proto";
+
+// Emitted when a vessel enters, remains in, or exits a restricted zone.
+message ZoneViolationEvent {
+  string vessel_id   = 1;
+  string zone_id     = 2;
+  string zone_name   = 3;
+  double lat         = 4;
+  double lon         = 5;
+  int64  ts_unix_ms  = 6;
+  string event_type  = 7;  // "ZONE_ENTER" | "ZONE_HEARTBEAT" | "ZONE_EXIT"
+}
+
+// A single vessel's last-known position.
+message PositionSnapshot {
+  string vessel_id   = 1;
+  double lat         = 2;
+  double lon         = 3;
+  float  sog_knots   = 4;
+  float  cog_degrees = 5;
+  int64  ts_unix_ms  = 6;
+}
+
+// Batched position updates sent to the event broker at a fixed tick rate.
+message PositionBatch {
+  repeated PositionSnapshot snapshots = 1;
+}

@@ -1,0 +1,38 @@
+// contracts/ais_record.proto
+// Wire contract: Engineer 1 (Simulator) → Engineer 2 (Spatial Engine)
+// Transport: UDP datagrams or gRPC stream, each carrying one serialized AISBatch.
+
+syntax = "proto3";
+package aisentry;
+
+option go_package = "github.com/aisentry/simulator/proto";
+
+// A single AIS position report from one simulated vessel.
+message AISRecord {
+  string vessel_id          = 1;  // stable UUID per simulated vessel
+  string mmsi               = 2;  // 9-digit simulated MMSI
+  double lat                = 3;  // -90..90
+  double lon                = 4;  // -180..180
+  float  sog_knots          = 5;  // speed over ground
+  float  cog_degrees        = 6;  // course over ground, 0-359.9
+  int64  ts_unix_ms         = 7;  // simulator-side send timestamp (ms since epoch)
+  bool   is_scripted_violator = 8; // testing/demo flag — true for vessels on scripted violation routes
+}
+
+// A batch of AIS records sent as a single network frame.
+// Target batch size: 128-512 records per batch.
+message AISBatch {
+  repeated AISRecord records = 1;
+  int32 batch_seq            = 2;  // monotonically increasing batch sequence number
+}
+
+// gRPC service definition for streaming fallback mode.
+// When UDP is blocked, the simulator opens a gRPC stream and sends AISBatch messages.
+service AISIngestion {
+  rpc StreamBatches (stream AISBatch) returns (IngestionAck);
+}
+
+message IngestionAck {
+  int64 batches_received = 1;
+  int64 records_received = 2;
+}

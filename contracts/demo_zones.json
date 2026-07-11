@@ -1,0 +1,86 @@
+[
+  {
+    "zone_id": "zone-001",
+    "name": "Spratly Islands Exclusion Zone",
+    "severity": "HIGH",
+    "polygon": [
+      [10.0, 113.0],
+      [10.0, 115.0],
+      [12.0, 115.0],
+      [12.0, 113.0],
+      [10.0, 113.0]
+    ]
+  },
+  {
+    "zone_id": "zone-002",
+    "name": "Paracel Islands Protected Area",
+    "severity": "HIGH",
+    "polygon": [
+      [15.5, 111.0],
+      [15.5, 113.0],
+      [17.0, 113.0],
+      [17.0, 111.0],
+      [15.5, 111.0]
+    ]
+  },
+  {
+    "zone_id": "zone-003",
+    "name": "Gulf of Thailand Fishing Restriction",
+    "severity": "MEDIUM",
+    "polygon": [
+      [7.0, 100.0],
+      [7.0, 102.5],
+      [9.5, 102.5],
+      [9.5, 100.0],
+      [7.0, 100.0]
+    ]
+  },
+  {
+    "zone_id": "zone-004",
+    "name": "Malacca Strait Security Zone",
+    "severity": "HIGH",
+    "polygon": [
+      [1.5, 103.0],
+      [1.5, 104.5],
+      [3.0, 104.5],
+      [3.0, 103.0],
+      [1.5, 103.0]
+    ]
+  },
+  {
+    "zone_id": "zone-005",
+    "name": "Sulu Sea Conservation Area",
+    "severity": "MEDIUM",
+    "polygon": [
+      [6.0, 119.0],
+      [6.0, 121.0],
+      [8.0, 121.0],
+      [8.0, 119.0],
+      [6.0, 119.0]
+    ]
+  },
+  {
+    "zone_id": "zone-006",
+    "name": "Natuna Islands Exclusive Zone",
+    "severity": "LOW",
+    "polygon": [
+      [3.0, 107.0],
+      [3.0, 109.0],
+      [5.0, 109.0],
+      [5.0, 107.0],
+      [3.0, 107.0]
+    ]
+  },
+  {
+    "zone_id": "zone-007",
+    "name": "Scarborough Shoal Restricted Area",
+    "severity": "HIGH",
+    "polygon": [
+      [14.5, 117.0],
+      [14.5, 118.5],
+      [16.0, 118.5],
+      [16.0, 117.0],
+      [14.5, 117.0]
+    ]
+  }
+]
